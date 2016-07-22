@@ -25,16 +25,26 @@
 
 
 ;;----------------------------------------------------------------------------
+;; Change the cursor type
+;;----------------------------------------------------------------------------
+(setq-default cursor-type 'bar)
+
+
+;;----------------------------------------------------------------------------
 ;; Window size and features
 ;;----------------------------------------------------------------------------
 (when (fboundp 'tool-bar-mode)
   (tool-bar-mode -1))
 (when (fboundp 'set-scroll-bar-mode)
-  (set-scroll-bar-mode nil))
+  (scroll-bar-mode -1))
+(when (fboundp 'linum-mode)
+  (global-linum-mode t))
+(when (fboundp 'hl-line-mode)
+  (global-hl-line-mode t))
 
-(let ((no-border '(internal-border-width . 0)))
-  (add-to-list 'default-frame-alist no-border)
-  (add-to-list 'initial-frame-alist no-border))
+(let ((window-size '(fullscreen . maximized)))
+  (add-to-list 'default-frame-alist window-size)
+  (add-to-list 'initial-frame-alist window-size))
 
 (defun sanityinc/adjust-opacity (frame incr)
   "Adjust the background opacity of FRAME by increment INCR."
