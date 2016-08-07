@@ -1,6 +1,6 @@
+
 ;;; This file bootstraps the configuration, which is divided into
 ;;; a number of other files.
-
 
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 (require 'init-benchmarking) ;; Measure startup time
@@ -36,6 +36,7 @@
 ;;----------------------------------------------------------------------------
 ;; Load configs for specific features and modes
 ;;----------------------------------------------------------------------------
+
 (require-package 'wgrep)
 (require-package 'project-local-variables)
 (require-package 'diminish)
@@ -53,7 +54,7 @@
 (require 'init-uniquify)
 (require 'init-ibuffer)
 (require 'init-flycheck)
-
+(require 'init-evil)
 (require 'init-recentf)
 (require 'init-ido)
 (require 'init-hippie-expand)
@@ -89,17 +90,16 @@
 (require 'init-haml)
 (require 'init-haskell)
 (require 'init-elm)
-(require 'init-python-mode)
 (require 'init-ruby-mode)
+(require 'init-python-mode)
 (require 'init-rails)
 (require 'init-sql)
 
 (require 'init-paredit)
 (require 'init-lisp)
 (require 'init-slime)
-(unless (version<= emacs-version "24.2")
-  (require 'init-clojure)
-  (require 'init-clojure-cider))
+(require 'init-clojure)
+(require 'init-clojure-cider)
 (require 'init-common-lisp)
 
 (when *spell-check-support-enabled*
